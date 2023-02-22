@@ -1,6 +1,16 @@
 import java.util.Arrays;
 
 public class Main {
+
+  public static void print2D(double mat[][])
+  {
+      // Loop through all rows
+      for (double[] row : mat)
+
+          // converting each row as string
+          // and then printing in a separate line
+          System.out.println(Arrays.toString(row));
+  }
   
   public static double[] flattenSquare(double[][] nums){
     double[] solution = new double[nums.length * nums.length];
@@ -39,15 +49,11 @@ public class Main {
         numColsTotal++;
       }
     }
-    System.out.println("total cols: " + numColsTotal);
 
     double[] solution = new double[numColsTotal];
     int solutionIndex = 0;
-    System.out.println("solution index: " + solutionIndex);
     for (int row = 0; row < numRows; row++){
-      System.out.println("Row: " + row);
       int numColsInRow = nums[row].length;
-      System.out.println("numColsInRow: " + numColsInRow);
       
       for (int col = 0; col < numColsInRow; col++){
         solution[solutionIndex] = nums[row][col];
@@ -56,13 +62,47 @@ public class Main {
     }
     return solution;
   }
+
+
+  public static double[][] copySquare(double[][] nums){
+    double[][] newSquare = new double[nums.length][nums.length];
+    for (int row = 0; row < nums.length; row++){
+      for(int col = 0; col < nums.length; col++){
+        newSquare[row][col] = nums[row][col];
+      }
+    }
+    return newSquare;
+  }
+
+  public static double[][] copyRectangle(double[][] nums){
+    double[][] newRectangle = new double[nums.length][nums[0].length];
+    for (int row = 0; row < nums.length; row++){
+      for(int col = 0; col < nums[0].length; col++){
+        newRectangle[row][col] = nums[row][col];
+      }
+    }
+    return newRectangle;
+  }
+
+  public static double[][] copyRagged(double[][] nums){
+    double[][] solution = new double[nums.length][];
+    for (int row = 0; row < nums.length; row++){
+      solution[row] = nums[row];
+    }
+    return solution;
+  }
+  
   public static void main(String[] args) {
     //double[][] testSquares = {{1,2,3,9}, {4,5,6,9}, {7,8,9,9},{7,8,9,9}};
-    //System.out.println(Arrays.toString(copySquare(testSquares)));
+    //System.out.println(Arrays.toString(flattenSquare(testSquares)));
     //double[][] testRectangles = {{1,2,3,4,},{4,3,2,1},{1,2,3,4}};
-    //System.out.println(Arrays.toString(copyRectangle(testRectangles)));
-    double[][] a = new double[][] {{1}, {1,2}, {1,2,3}};
-    System.out.println(Arrays.toString(flattenRagged(a)));
+    //System.out.println(Arrays.toString(flattenRectangle(testRectangles)));
+    //double[][] a = new double[][] {{1}, {1,2}, {1,2,3}};
+    //System.out.println(Arrays.toString(flattenRagged(a)));
+    //double[][] test = {{1,2},{1,2,3,4}};
+    //print2D(copySquare(test));
+    //print2D(copyRagged(test));
+
   }
   
 }
