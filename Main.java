@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Main {
   
-  public static double[] copySquare(double[][] nums){
+  public static double[] flattenSquare(double[][] nums){
     double[] solution = new double[nums.length * nums.length];
     int solutionIndex = 0;
     for (int i = 0; i < nums.length; i++){
@@ -15,7 +15,7 @@ public class Main {
   }
 
 
-  public static double[] copyRectangle(double[][] nums){
+  public static double[] flattenRectangle(double[][] nums){
     int cols = 0;
     for (int i = 0; i<nums[0].length; i++){
       cols++;
@@ -31,32 +31,27 @@ public class Main {
     return solution;
   }
 
-  public static double[] copyRagged(double[][] nums){
+  public static double[] flattenRagged(double[][] nums){
     int numColsTotal = 0;
     int numRows = nums.length;
     for (int row = 0; row < numRows; row++){
-      int numColsInRow = 0;
       for (int col = 0; col < nums[row].length; col++){
-        numColsInRow++;
+        numColsTotal++;
       }
-    numColsTotal+=numColsInRow;
     }
-
-
-
+    System.out.println("total cols: " + numColsTotal);
 
     double[] solution = new double[numColsTotal];
     int solutionIndex = 0;
     System.out.println("solution index: " + solutionIndex);
     for (int row = 0; row < numRows; row++){
       System.out.println("Row: " + row);
-      int numColsInRow = 0;
+      int numColsInRow = nums[row].length;
       System.out.println("numColsInRow: " + numColsInRow);
-      for (int col = 0; col < nums[row].length; col++){
-        numColsInRow++;
-      }
+      
       for (int col = 0; col < numColsInRow; col++){
         solution[solutionIndex] = nums[row][col];
+        solutionIndex++;
       }
     }
     return solution;
@@ -67,7 +62,7 @@ public class Main {
     //double[][] testRectangles = {{1,2,3,4,},{4,3,2,1},{1,2,3,4}};
     //System.out.println(Arrays.toString(copyRectangle(testRectangles)));
     double[][] a = new double[][] {{1}, {1,2}, {1,2,3}};
-    System.out.println(Arrays.toString(copyRagged(a)));
+    System.out.println(Arrays.toString(flattenRagged(a)));
   }
   
 }
